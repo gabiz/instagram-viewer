@@ -2,7 +2,7 @@
 
 This is a read-only photo viewer for Instagram which allows a user to checkout out popular photos.
 
-Time spent: 5=5 hours spent in total
+Time spent: 5=5 hours spent in total.
 
 Completed user stories:
 

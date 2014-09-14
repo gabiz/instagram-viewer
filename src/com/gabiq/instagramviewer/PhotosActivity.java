@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,11 +25,28 @@ public class PhotosActivity extends Activity {
     public static final String CLIENT_ID = "4ff912bb27cc492c8b35785bdc59f661";
     private ArrayList<InstagramPhoto> photos;
     private InstagramPhotosAdapter aPhotos;
-
+    private SwipeRefreshLayout swipeContainer;
+    
+    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_photos);
+
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchPopularPhotos();
+            } 
+        });
+        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, 
+                android.R.color.holo_green_light, 
+                android.R.color.holo_orange_light, 
+                android.R.color.holo_red_light);        
+        
+        
         fetchPopularPhotos();
     }
 
@@ -46,7 +65,7 @@ public class PhotosActivity extends Activity {
             @Override
             public void onSuccess(int statusCode, Header[] headers,
                     JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+                swipeContainer.setRefreshing(false);
                 Log.i("INFO", response.toString());
 
                 JSONArray photosJSON = null;
