@@ -4,8 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 public class InstagramPhoto {
     public String username;
     public String caption;
@@ -15,6 +13,8 @@ public class InstagramPhoto {
     
     public String profilePictureUrl;
     public String createdTime;
+    public int commentCount;
+    public JSONArray comments;
     
     public void parseJSON(JSONObject photoJSON) throws JSONException {
         username = photoJSON.getJSONObject("user").getString("username");
@@ -31,10 +31,8 @@ public class InstagramPhoto {
         profilePictureUrl = photoJSON.getJSONObject("user").getString("profile_picture");
         createdTime = photoJSON.getString("created_time");
         
-        JSONObject comments = photoJSON.getJSONObject("comments");
-        int commentCount = comments.getInt("count");
-        JSONArray commentData = comments.getJSONArray("data");
-        
-        Log.d("InstagramPhoto", "comments"+commentCount);
+        JSONObject commentsObj = photoJSON.getJSONObject("comments");
+        commentCount = commentsObj.getInt("count");
+        comments = commentsObj.getJSONArray("data");
     }
 }

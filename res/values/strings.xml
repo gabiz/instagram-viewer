@@ -7,5 +7,7 @@
     <string name="popular_photos_action">Popular Photos</string>
     <string name="caption_default_text">This is a default caption</string>
     <string name="username_default_text">Anonymous</string>
+    <string name="pre_likes_text">♥</string>
+    <string name="post_likes_text">like</string>
     
 </resources>

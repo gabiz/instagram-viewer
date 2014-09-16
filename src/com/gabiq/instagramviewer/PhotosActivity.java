@@ -41,10 +41,11 @@ public class PhotosActivity extends Activity {
                 fetchPopularPhotos();
             } 
         });
-        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, 
-                android.R.color.holo_green_light, 
-                android.R.color.holo_orange_light, 
-                android.R.color.holo_red_light);        
+        
+//        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, 
+//                android.R.color.holo_green_light, 
+//                android.R.color.holo_orange_light, 
+//                android.R.color.holo_red_light);        
         
         
         fetchPopularPhotos();
@@ -96,6 +97,7 @@ public class PhotosActivity extends Activity {
                     String responseString, Throwable throwable) {
                 // TODO Auto-generated method stub
                 super.onFailure(statusCode, headers, responseString, throwable);
+                swipeContainer.setRefreshing(false);
                 Log.e("ERROR", "error downloading json");
             }
         });
