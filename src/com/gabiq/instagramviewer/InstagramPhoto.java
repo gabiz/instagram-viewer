@@ -1,10 +1,26 @@
 package com.gabiq.instagramviewer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class InstagramPhoto {
+    public class InstagramComment {
+        public String username;
+        public String caption;
+        
+        public void parseJSON(JSONObject commentJSON) throws JSONException {
+            username = commentJSON.getJSONObject("from").getString("username");
+            caption = commentJSON.getString("text");
+        }
+    }
+    
+    
     public String username;
     public String caption;
     public String imageUrl;
@@ -14,7 +30,7 @@ public class InstagramPhoto {
     public String profilePictureUrl;
     public String createdTime;
     public int commentCount;
-    public JSONArray comments;
+    public List<InstagramComment> comments;
     
     public void parseJSON(JSONObject photoJSON) throws JSONException {
         username = photoJSON.getJSONObject("user").getString("username");
@@ -31,8 +47,19 @@ public class InstagramPhoto {
         profilePictureUrl = photoJSON.getJSONObject("user").getString("profile_picture");
         createdTime = photoJSON.getString("created_time");
         
+        // Parse comments
         JSONObject commentsObj = photoJSON.getJSONObject("comments");
         commentCount = commentsObj.getInt("count");
-        comments = commentsObj.getJSONArray("data");
+        JSONArray commentsJSON = commentsObj.getJSONArray("data");
+        
+        comments = new ArrayList<InstagramComment>();
+        int jsonCommentCount = commentsJSON.length();
+        for (int i=0; i<jsonCommentCount; i++) {
+            Log.d("foo", "comment #"+i);
+            JSONObject commentJSON = commentsJSON.getJSONObject(i);
+            InstagramComment comment = new InstagramComment();
+            comment.parseJSON(commentJSON);
+            comments.add(comment);
+        }
     }
 }

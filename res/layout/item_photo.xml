@@ -47,8 +47,8 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="14dp"
-            android:layout_height="14dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_toLeftOf="@+id/tvCreationTime"
@@ -62,11 +62,11 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingBottom="2dp"
-            android:paddingLeft="4dp"
+            android:paddingLeft="2dp"
             android:paddingRight="15dp"
             android:text=""
             android:textColor="#b0b0b0"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </RelativeLayout>
 
     <ImageView
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/likeFooter"
-        android:paddingBottom="10dp"
+        android:paddingBottom="2dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
 
@@ -130,6 +130,7 @@
 
         <TextView
             android:id="@+id/tvCommentHeader"
+            android:paddingBottom="2dp"
             android:textColor="@color/gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,6 +140,7 @@
             android:id="@+id/tvComment1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
             android:ellipsize="end"
             android:maxLines="3"
             android:text="@string/caption_default_text" />
@@ -147,6 +149,7 @@
             android:id="@+id/tvComment2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
             android:ellipsize="end"
             android:maxLines="3"
             android:text="@string/caption_default_text" />
