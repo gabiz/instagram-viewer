@@ -87,6 +87,7 @@ public class PhotosActivity extends Activity {
                         }
                     }
                     aPhotos.notifyDataSetChanged();
+                    Log.d(TAG, "******************** notifyDataSetChanged");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
