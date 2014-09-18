@@ -9,5 +9,7 @@
     <string name="username_default_text">Anonymous</string>
     <string name="pre_likes_text">♥</string>
     <string name="post_likes_text">like</string>
+    <string name="photo_parsing_error">Photo parsing error</string>
+    <string name="download_error">Download error</string>
     
 </resources>

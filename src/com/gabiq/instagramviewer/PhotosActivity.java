@@ -13,6 +13,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -74,11 +75,13 @@ public class PhotosActivity extends Activity {
                                 photos.add(photo);
                             }
                         } catch (JSONException e) {
+                            Toast.makeText(PhotosActivity.this, R.string.photo_parsing_error, Toast.LENGTH_SHORT).show();
                             Log.e(TAG, "error parsing photo e:"+e.toString());
                         }
                     }
                     
                 } catch (JSONException e) {
+                    Toast.makeText(PhotosActivity.this, R.string.photo_parsing_error, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 
@@ -91,6 +94,7 @@ public class PhotosActivity extends Activity {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 swipeContainer.setRefreshing(false);
                 Log.e("ERROR", "error downloading json");
+                Toast.makeText(PhotosActivity.this, R.string.download_error, Toast.LENGTH_SHORT).show();
             }
         });
 

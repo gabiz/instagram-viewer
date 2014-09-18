@@ -7,8 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 public class InstagramPhoto {
     public class InstagramComment {
         public String username;
@@ -55,7 +53,6 @@ public class InstagramPhoto {
         comments = new ArrayList<InstagramComment>();
         int jsonCommentCount = commentsJSON.length();
         for (int i=0; i<jsonCommentCount; i++) {
-            Log.d("foo", "comment #"+i);
             JSONObject commentJSON = commentsJSON.getJSONObject(i);
             InstagramComment comment = new InstagramComment();
             comment.parseJSON(commentJSON);
